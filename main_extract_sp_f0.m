@@ -10,10 +10,10 @@ opts.spectralUpdateInterval = 5;   %frame shift(ms)
 opts.F0searchLowerBound     = 50;  %F0 lower bound
 opts.F0searchUpperBound     = 600; %F0 upper bound
 fs   = 16000;
-RAW_PATH = './raw-1000/';
+RAW_PATH = './raw/';
 %WAV_PATH = './wav-10/';
-SP_PATH  = './sp-1000/'; mkdir(SP_PATH);
-F0_PATH  = './f0-1000/'; mkdir(F0_PATH);
+SP_PATH  = './sp/'; mkdir(SP_PATH);
+F0_PATH  = './f0/'; mkdir(F0_PATH);
 %%%%%%%%%%%%Settings%%%%%%%%%%%%
 
 fns_all = Utils_getFilenames(RAW_PATH, '.raw');
