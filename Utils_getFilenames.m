@@ -1,5 +1,5 @@
-% shuaijiang@201807
 function filenames = Utils_getFilenames(path,lastname)
+% shuaijiang@201807
 temp = dir(path);
 cntr = 1;
 for i = 3:length(temp)  %ignore . and ..
