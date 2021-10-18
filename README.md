@@ -6,115 +6,112 @@ This is a speech analysis, modification and synthesis system
 # Usage
 ## exstraightsource
    Source information extraction for STRAIGHT
-   
+   ```matlab
    [f0raw,ap,analysisParams]=exstraightsource(x,fs,optionalParams)
+   ```
+### Input parameters
+   `x`   : input signal. if it is multi channel, only the first channel is used
    
-   Input parameters
+   `fs`  : sampling frequency (Hz)
    
-   x   : input signal. if it is multi channel, only the first channel is used
+   `optionalParams` : Optional parameters for analysis
+### Output parameters
    
-   fs  : sampling frequency (Hz)
+   `f0raw`   : fundamental frequency (Hz)
    
-   optionalParams : Optional parameters for analysis
-   
-   Output parameters
-   
-   f0raw   : fundamental frequency (Hz)
-   
-   ap  : amount of aperiodic component in the time frequency representation
+   `ap`  : amount of aperiodic component in the time frequency representation
        : represented in dB
    
-   analysisParams : Analysis parameters actually used
-
-   Usage:
+   `analysisParams` : Analysis parameters actually used
+### Usage:
    
-   Case 1: The simplest method
-   
+   - Case 1: The simplest method
+   ```matlab
    [f0raw,ap]=exstraightsource(x,fs); 
-   
-   Case 2: You can get to know what parameters were used.
-   
+   ```
+   - Case 2: You can get to know what parameters were used.
+   ```matlab
    [f0raw,ap,analysisParams]=exstraightsource(x,fs);
-   
-   CAse 3: You can have full control of STRAIGHT synthesis.
+   ```
+   - Case 3: You can have full control of STRAIGHT synthesis.
        Please use case 2 to find desired parameters to modify.
-   
+   ```matlab
    [f0raw,ap,analysisParams]=exstraightsource(x,fs,optionalParams);
-
+   ```
 ## exstraightspec
    Spectral information extraction for STRAIGHT
-   
+   ```matlab
    [n3sgram,nalysisParamsSp]=exstraightspec(x,f0raw,fs,optionalParamsSP)
+   ```
+   ### Input parameters
    
-   Input parameters
+   `x`   : input signal. only the first channel is analyzed
    
-   x   : input signal. only the first channel is analyzed
-   
-   f0raw   : fundamental frequency (Hz) in 1 ms temporal resolution
+   `f0raw`   : fundamental frequency (Hz) in 1 ms temporal resolution
            : set 0 for aperiodic part
    
-   fs  : sampling frequency (Hz)
+   `fs`  : sampling frequency (Hz)
    
-   optionalParamsSP : spectrum analysis parameters
+   `optionalParamsSP` : spectrum analysis parameters
    
-   Output parameters
+   ### Output parameters
    
-   n3sgram : Smoothed time frequency representation (spectrogram)
+   `n3sgram` : Smoothed time frequency representation (spectrogram)
    
-   analysisParamsSp :  Actually used parameters
+   `analysisParamsSp` :  Actually used parameters
 
-   Usage:
+   ### Usage:
    
-   Case 1: The simplest method
-   
+   - Case 1: The simplest method
+   ```matlab
    n3sgram = exstraightspec(x,f0raw,fs); 
-   
-   Case 2: You can get to know what parameters were used.
-   
+   ```
+   - Case 2: You can get to know what parameters were used.
+   ```matlab
    [n3sgram,analysisParamsSp]=exstraightspec(x,f0raw,fs);
-   
-   CAse 3: You can have full control of STRAIGHT synthesis.
+   ```
+   - Case 3: You can have full control of STRAIGHT synthesis.
        Please use case 2 to find desired parameters to modify.
-   
+   ```matlab
    [n3sgram,analysisParamsSp]=exstraightspec(x,f0raw,fs,optionalParamsSP);
-   
+   ```
 ## exstraightsynth
    Synthesis using STRAIGHT parameters
-   
+   ```matlab
    [sy,prmS] = exstraightsynth(f0raw,n3sgram,ap,fs,optionalParamsS)
+   ```
+   ### Input parameters
    
-   Input parameters
+   `f0raw`   : fundamental frequency (Hz) 
    
-   f0raw   : fundamental frequency (Hz) 
+   `n3sgram` : STRAIGHT spectrogram (in absolute value)
    
-   n3sgram : STRAIGHT spectrogram (in absolute value)
+   `ap`      : aperiodic component (dB re. to total power)
    
-   ap      : aperiodic component (dB re. to total power)
+   `fs`      : sampling frequency (Hz)
    
-   fs      : sampling frequency (Hz)
+   `optionalParamsS` : optional synthesis parameters
    
-   optionalParamsS : optional synthesis parameters
+   ### Output parameters
    
-   Output parameters
+   `sy`      : synthesized speech
    
-   sy      : synthesized speech
-   
-   prmS    : Actually used synthesis parameters
+   `prmS`    : Actually used synthesis parameters
 
-   Usage:
+   ### Usage:
    
-   Case 1: The simplest method
-   
+   - Case 1: The simplest method
+   ```matlab
    sy = exstraightsynth(f0raw,n3sgram,ap,fs); 
-   
-   Case 2: You can get to know what parameters were used.
-   
+   ```
+   - Case 2: You can get to know what parameters were used.
+   ```matlab
    [sy,prmS] = exstraightsynth(f0raw,n3sgram,ap,fs);
-   
-   Case 3: You can have full control of STRAIGHT synthesis.
+   ```
+   - Case 3: You can have full control of STRAIGHT synthesis.
        Please use case 2 to find desired parameters to modify.
-   
+   ```matlab
    [sy,prmS] = exstraightsynth(f0raw,n3sgram,ap,fs,optionalParamsS);
-   
+   ```
 # Reference
 http://www.wakayama-u.ac.jp/~kawahara/STRAIGHTadv/index_e.html
